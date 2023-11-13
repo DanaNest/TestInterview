@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Мой веб-сервис</title>
+</head>
+<body>
+    <h1>Мой веб-сервис</h1>
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <input type="file" name="file" accept=".txt"><br>
+        <input type="submit" value="Загрузить файл">
+    </form>
+    <br>
+    <form method="post">
+        {% csrf_token %}
+        <input type="text" name="word" placeholder="Введите слово"><br>
+        <input type="submit" value="Подсчитать">
+    </form>
+    <br>
+    <form method="post">
+        {% csrf_token %}
+        <input type="hidden" name="clear" value="true">
+        <input type="submit" value="Очистить данные">
+    </form>
+    {% if count %}
+        <p>Слово '{{ word }}' встречается {{ count }} раз(а)</p>
+    {% endif %}
+</body>
+</html>
